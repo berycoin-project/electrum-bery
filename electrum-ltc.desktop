@@ -2,18 +2,18 @@
 # sudo desktop-file-install electrum-ltc.desktop
 
 [Desktop Entry]
-Comment=Lightweight Litecoin Client
+Comment=Lightweight Berycoin Client
 Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\" electrum-ltc %u"
-GenericName[en_US]=Litecoin Wallet
-GenericName=Litecoin Wallet
+GenericName[en_US]=Berycoin Wallet
+GenericName=Berycoin Wallet
 Icon=electrum-ltc
-Name[en_US]=Electrum Litecoin Wallet
-Name=Electrum Litecoin Wallet
+Name[en_US]=Electrum Berycoin Wallet
+Name=Electrum Berycoin Wallet
 Categories=Finance;Network;
 StartupNotify=false
 Terminal=false
 Type=Application
-MimeType=x-scheme-handler/litecoin;
+MimeType=x-scheme-handler/berycoin;
 Actions=Testnet;
 
 [Desktop Action Testnet]
