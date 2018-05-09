@@ -1,4 +1,4 @@
-Electrum-LTC - Lightweight Berycoin client
+Electrum-BERY - Lightweight Berycoin client
 ==========================================
 
 ::
@@ -7,7 +7,7 @@ Electrum-LTC - Lightweight Berycoin client
   Original Author: Thomas Voegtlin
   Port Maintainer: Pooler
   Language: Python
-  Homepage: https://electrum-ltc.org/
+  Homepage: https://electrum-bery.org/
 
 
 
@@ -27,7 +27,7 @@ Electrum from its root directory, without installing it on your
 system; all the python dependencies are included in the 'packages'
 directory. To run Electrum from its root directory, just do::
 
-    ./electrum-ltc
+    ./electrum-bery
 
 You can also install Electrum on your system, by running this command::
 
@@ -50,8 +50,8 @@ Development version
 
 Check out the code from GitHub::
 
-    git clone git://github.com/pooler/electrum-ltc.git
-    cd electrum-ltc
+    git clone git://github.com/pooler/electrum-bery.git
+    cd electrum-bery
 
 Run install (this should install dependencies)::
 

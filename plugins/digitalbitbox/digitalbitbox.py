@@ -4,17 +4,17 @@
 #
 
 try:
-    import electrum_ltc as electrum
-    from electrum_ltc.bitcoin import TYPE_ADDRESS, push_script, var_int, msg_magic, Hash, verify_message, pubkey_from_signature, point_to_ser, public_key_to_p2pkh, EncodeAES, DecodeAES, MyVerifyingKey, is_address
-    from electrum_ltc.bitcoin import serialize_xpub, deserialize_xpub
-    from electrum_ltc.wallet import Standard_Wallet
-    from electrum_ltc import constants
-    from electrum_ltc.transaction import Transaction
-    from electrum_ltc.i18n import _
-    from electrum_ltc.keystore import Hardware_KeyStore
+    import electrum_bery as electrum
+    from electrum_bery.bitcoin import TYPE_ADDRESS, push_script, var_int, msg_magic, Hash, verify_message, pubkey_from_signature, point_to_ser, public_key_to_p2pkh, EncodeAES, DecodeAES, MyVerifyingKey, is_address
+    from electrum_bery.bitcoin import serialize_xpub, deserialize_xpub
+    from electrum_bery.wallet import Standard_Wallet
+    from electrum_bery import constants
+    from electrum_bery.transaction import Transaction
+    from electrum_bery.i18n import _
+    from electrum_bery.keystore import Hardware_KeyStore
     from ..hw_wallet import HW_PluginBase
-    from electrum_ltc.util import print_error, to_string, UserCancelled
-    from electrum_ltc.base_wizard import ScriptTypeNotSupported, HWD_SETUP_NEW_WALLET
+    from electrum_bery.util import print_error, to_string, UserCancelled
+    from electrum_bery.base_wizard import ScriptTypeNotSupported, HWD_SETUP_NEW_WALLET
 
     import time
     import hid
@@ -290,7 +290,7 @@ class DigitalBitbox_Client():
 
     def dbb_generate_wallet(self):
         key = self.stretch_key(self.password)
-        filename = ("Electrum-LTC-" + time.strftime("%Y-%m-%d-%H-%M-%S") + ".pdf")
+        filename = ("Electrum-BERY-" + time.strftime("%Y-%m-%d-%H-%M-%S") + ".pdf")
         msg = ('{"seed":{"source": "create", "key": "%s", "filename": "%s", "entropy": "%s"}}' % (key, filename, 'Digital Bitbox Electrum Plugin')).encode('utf8')
         reply = self.hid_send_encrypt(msg)
         if 'error' in reply:

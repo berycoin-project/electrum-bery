@@ -39,21 +39,21 @@ import PyQt5.QtCore as QtCore
 from .exception_window import Exception_Hook
 from PyQt5.QtWidgets import *
 
-from electrum_ltc import keystore, simple_config
-from electrum_ltc.bitcoin import COIN, is_address, TYPE_ADDRESS
-from electrum_ltc import constants
-from electrum_ltc.plugins import run_hook
-from electrum_ltc.i18n import _
-from electrum_ltc.util import (format_time, format_satoshis, format_fee_satoshis,
+from electrum_bery import keystore, simple_config
+from electrum_bery.bitcoin import COIN, is_address, TYPE_ADDRESS
+from electrum_bery import constants
+from electrum_bery.plugins import run_hook
+from electrum_bery.i18n import _
+from electrum_bery.util import (format_time, format_satoshis, format_fee_satoshis,
                                format_satoshis_plain, NotEnoughFunds, PrintError,
                                UserCancelled, NoDynamicFeeEstimates, profiler,
                                export_meta, import_meta, bh2u, bfh, InvalidPassword,
                                base_units, base_units_list, base_unit_name_to_decimal_point,
                                decimal_point_to_base_unit_name)
-from electrum_ltc import Transaction
-from electrum_ltc import util, bitcoin, commands, coinchooser
-from electrum_ltc import paymentrequest
-from electrum_ltc.wallet import Multisig_Wallet, AddTransactionException
+from electrum_bery import Transaction
+from electrum_bery import util, bitcoin, commands, coinchooser
+from electrum_bery import paymentrequest
+from electrum_bery.wallet import Multisig_Wallet, AddTransactionException
 
 from .amountedit import AmountEdit, BTCAmountEdit, MyLineEdit, FeerateEdit
 from .qrcodewidget import QRCodeWidget, QRDialog
@@ -82,7 +82,7 @@ class StatusBarButton(QPushButton):
             self.func()
 
 
-from electrum_ltc.paymentrequest import PR_PAID
+from electrum_bery.paymentrequest import PR_PAID
 
 
 class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
@@ -161,7 +161,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         if self.config.get("is_maximized"):
             self.showMaximized()
 
-        self.setWindowIcon(QIcon(":icons/electrum-ltc.png"))
+        self.setWindowIcon(QIcon(":icons/electrum-bery.png"))
         self.init_menubar()
 
         wrtabs = weakref.proxy(tabs)
@@ -376,7 +376,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
             self.setGeometry(100, 100, 840, 400)
 
     def watching_only_changed(self):
-        name = "Electrum-LTC Testnet" if constants.net.TESTNET else "Electrum-LTC"
+        name = "Electrum-BERY Testnet" if constants.net.TESTNET else "Electrum-BERY"
         title = '%s %s  -  %s' % (name, self.wallet.electrum_version,
                                         self.wallet.basename())
         extra = [self.wallet.storage.get('wallet_type', '?')]
@@ -542,7 +542,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
 
         help_menu = menubar.addMenu(_("&Help"))
         help_menu.addAction(_("&About"), self.show_about)
-        help_menu.addAction(_("&Official website"), lambda: webbrowser.open("https://electrum-ltc.org"))
+        help_menu.addAction(_("&Official website"), lambda: webbrowser.open("https://electrum-bery.org"))
         help_menu.addSeparator()
         help_menu.addAction(_("&Documentation"), lambda: webbrowser.open("http://docs.electrum.org/")).setShortcut(QKeySequence.HelpContents)
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
@@ -560,7 +560,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
             self.show_error(_('No donation address for this server'))
 
     def show_about(self):
-        QMessageBox.about(self, "Electrum-LTC",
+        QMessageBox.about(self, "Electrum-BERY",
             _("Version")+" %s" % (self.wallet.electrum_version) + "\n\n" +
                 _("Electrum's focus is speed, with low resource usage and simplifying Berycoin. You do not need to perform regular backups, because your wallet can be recovered from a secret phrase that you can memorize or write on paper. Startup times are instant because it operates in conjunction with high-performance servers that handle the most complicated parts of the Berycoin system."  + "\n\n" +
                 _("Uses icons from the Icons8 icon pack (icons8.com).")))
@@ -568,11 +568,11 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
     def show_report_bug(self):
         msg = ' '.join([
             _("Please report any bugs as issues on github:<br/>"),
-            "<a href=\"https://github.com/pooler/electrum-ltc/issues\">https://github.com/pooler/electrum-ltc/issues</a><br/><br/>",
+            "<a href=\"https://github.com/pooler/electrum-bery/issues\">https://github.com/pooler/electrum-bery/issues</a><br/><br/>",
             _("Before reporting a bug, upgrade to the most recent version of Electrum (latest release or git HEAD), and include the version number in your report."),
             _("Try to explain not only what the bug is, but how it occurs.")
          ])
-        self.show_message(msg, title="Electrum-LTC - " + _("Reporting Bugs"))
+        self.show_message(msg, title="Electrum-BERY - " + _("Reporting Bugs"))
 
     def notify_transactions(self):
         if not self.network or not self.network.is_connected():
@@ -602,9 +602,9 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         if self.tray:
             try:
                 # this requires Qt 5.9
-                self.tray.showMessage("Electrum-LTC", message, QIcon(":icons/electrum_dark_icon"), 20000)
+                self.tray.showMessage("Electrum-BERY", message, QIcon(":icons/electrum_dark_icon"), 20000)
             except TypeError:
-                self.tray.showMessage("Electrum-LTC", message, QSystemTrayIcon.Information, 20000)
+                self.tray.showMessage("Electrum-BERY", message, QSystemTrayIcon.Information, 20000)
 
 
 
@@ -1952,7 +1952,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         self.send_button.setVisible(not self.wallet.is_watching_only())
 
     def change_password_dialog(self):
-        from electrum_ltc.storage import STO_EV_XPUB_PW
+        from electrum_bery.storage import STO_EV_XPUB_PW
         if self.wallet.get_available_storage_encryption_version() == STO_EV_XPUB_PW:
             from .password_dialog import ChangePasswordDialogForHW
             d = ChangePasswordDialogForHW(self, self.wallet)
@@ -2293,7 +2293,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         return d.run()
 
     def tx_from_text(self, txt):
-        from electrum_ltc.transaction import tx_from_str
+        from electrum_bery.transaction import tx_from_str
         try:
             tx = tx_from_str(txt)
             return Transaction(tx)
@@ -2302,7 +2302,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
             return
 
     def read_tx_from_qrcode(self):
-        from electrum_ltc import qrscanner
+        from electrum_bery import qrscanner
         try:
             data = qrscanner.scan_barcode(self.config.get_video_device())
         except BaseException as e:
@@ -2351,7 +2351,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
             self.show_transaction(tx)
 
     def do_process_from_txid(self):
-        from electrum_ltc import transaction
+        from electrum_bery import transaction
         txid, ok = QInputDialog.getText(self, _('Lookup transaction'), _('Transaction ID') + ':')
         if ok and txid:
             txid = str(txid).strip()
@@ -2386,7 +2386,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         e.setReadOnly(True)
         vbox.addWidget(e)
 
-        defaultname = 'electrum-ltc-private-keys.csv'
+        defaultname = 'electrum-bery-private-keys.csv'
         select_msg = _('Select file to export your private keys to')
         hbox, filename_e, csv_button = filename_field(self, self.config, defaultname, select_msg)
         vbox.addLayout(hbox)
@@ -2526,7 +2526,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         address_e.textChanged.connect(on_address)
         if not d.exec_():
             return
-        from electrum_ltc.wallet import sweep_preparations
+        from electrum_bery.wallet import sweep_preparations
         try:
             self.do_clear()
             coins, keypairs = sweep_preparations(get_pk(), self.network)
@@ -2599,7 +2599,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         lang_help = _('Select which language is used in the GUI (after restart).')
         lang_label = HelpLabel(_('Language') + ':', lang_help)
         lang_combo = QComboBox()
-        from electrum_ltc.i18n import languages
+        from electrum_bery.i18n import languages
         lang_combo.addItems(list(languages.values()))
         lang_keys = list(languages.keys())
         lang_cur_setting = self.config.get("language", '')
@@ -2724,7 +2724,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
 
         units = base_units_list
         msg = (_('Base unit of your wallet.')
-               + '\n1 LTC = 1000 mLTC. 1 mLTC = 1000 uLTC. 1 uLTC = 100 sat.\n'
+               + '\n1 BERY = 1000 mBERY. 1 mBERY = 1000 uBERY. 1 uBERY = 100 sat.\n'
                + _('This setting affects the Send tab, and all balance related fields.'))
         unit_label = HelpLabel(_('Base unit') + ':', msg)
         unit_combo = QComboBox()
@@ -2760,7 +2760,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         block_ex_combo.currentIndexChanged.connect(on_be)
         gui_widgets.append((block_ex_label, block_ex_combo))
 
-        from electrum_ltc import qrscanner
+        from electrum_bery import qrscanner
         system_cameras = qrscanner._find_system_cameras()
         qr_combo = QComboBox()
         qr_combo.addItem("Default","default")

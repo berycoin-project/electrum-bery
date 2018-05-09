@@ -3,15 +3,15 @@ import hashlib
 import sys
 import traceback
 
-from electrum_ltc import bitcoin
-from electrum_ltc.bitcoin import TYPE_ADDRESS, int_to_hex, var_int
-from electrum_ltc.i18n import _
-from electrum_ltc.plugins import BasePlugin
-from electrum_ltc.keystore import Hardware_KeyStore
-from electrum_ltc.transaction import Transaction
-from electrum_ltc.wallet import Standard_Wallet
+from electrum_bery import bitcoin
+from electrum_bery.bitcoin import TYPE_ADDRESS, int_to_hex, var_int
+from electrum_bery.i18n import _
+from electrum_bery.plugins import BasePlugin
+from electrum_bery.keystore import Hardware_KeyStore
+from electrum_bery.transaction import Transaction
+from electrum_bery.wallet import Standard_Wallet
 from ..hw_wallet import HW_PluginBase
-from electrum_ltc.util import print_error, is_verbose, bfh, bh2u, versiontuple
+from electrum_bery.util import print_error, is_verbose, bfh, bh2u, versiontuple
 
 try:
     import hid

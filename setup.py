@@ -36,40 +36,40 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
         else:
             usr_share = os.path.expanduser('~/.local/share')
     data_files += [
-        (os.path.join(usr_share, 'applications/'), ['electrum-ltc.desktop']),
-        (os.path.join(usr_share, icons_dirname), ['icons/electrum-ltc.png'])
+        (os.path.join(usr_share, 'applications/'), ['electrum-bery.desktop']),
+        (os.path.join(usr_share, icons_dirname), ['icons/electrum-bery.png'])
     ]
 
 setup(
-    name="Electrum-LTC",
+    name="Electrum-BERY",
     version=version.ELECTRUM_VERSION,
     install_requires=requirements,
     extras_require={
         'full': requirements_hw + ['pycryptodomex', 'scrypt>=0.6.0'],
     },
     packages=[
-        'electrum_ltc',
-        'electrum_ltc_gui',
-        'electrum_ltc_gui.qt',
-        'electrum_ltc_plugins',
-        'electrum_ltc_plugins.audio_modem',
-        'electrum_ltc_plugins.cosigner_pool',
-        'electrum_ltc_plugins.email_requests',
-        'electrum_ltc_plugins.hw_wallet',
-        'electrum_ltc_plugins.keepkey',
-        'electrum_ltc_plugins.labels',
-        'electrum_ltc_plugins.ledger',
-        'electrum_ltc_plugins.trezor',
-        'electrum_ltc_plugins.digitalbitbox',
-        'electrum_ltc_plugins.virtualkeyboard',
+        'electrum_bery',
+        'electrum_bery_gui',
+        'electrum_bery_gui.qt',
+        'electrum_bery_plugins',
+        'electrum_bery_plugins.audio_modem',
+        'electrum_bery_plugins.cosigner_pool',
+        'electrum_bery_plugins.email_requests',
+        'electrum_bery_plugins.hw_wallet',
+        'electrum_bery_plugins.keepkey',
+        'electrum_bery_plugins.labels',
+        'electrum_bery_plugins.ledger',
+        'electrum_bery_plugins.trezor',
+        'electrum_bery_plugins.digitalbitbox',
+        'electrum_bery_plugins.virtualkeyboard',
     ],
     package_dir={
-        'electrum_ltc': 'lib',
-        'electrum_ltc_gui': 'gui',
-        'electrum_ltc_plugins': 'plugins',
+        'electrum_bery': 'lib',
+        'electrum_bery_gui': 'gui',
+        'electrum_bery_plugins': 'plugins',
     },
     package_data={
-        'electrum_ltc': [
+        'electrum_bery': [
             'servers.json',
             'servers_testnet.json',
             'servers_regtest.json',
@@ -81,12 +81,12 @@ setup(
             'locale/*/LC_MESSAGES/electrum.mo',
         ]
     },
-    scripts=['electrum-ltc'],
+    scripts=['electrum-bery'],
     data_files=data_files,
     description="Lightweight Berycoin Wallet",
     author="Thomas Voegtlin",
     author_email="thomasv@electrum.org",
     license="MIT Licence",
-    url="http://electrum-ltc.org",
+    url="http://electrum-bery.org",
     long_description="""Lightweight Berycoin Wallet"""
 )
