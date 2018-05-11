@@ -41,23 +41,23 @@ class BitcoinMainnet:
 
     TESTNET = False
     WIF_PREFIX = 0x80
-    ADDRTYPE_P2PKH = 48
-    ADDRTYPE_P2SH = 50
+    ADDRTYPE_P2PKH = 25
+    ADDRTYPE_P2SH = 51
     SEGWIT_HRP = "bery"
-    GENESIS = "12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"
+    GENESIS = "ff23a3590cc6e308f1817283cfa807793aae41d6a1de9f30ed15b7e8361d7005"
     DEFAULT_PORTS = {'t': '50001', 's': '50002'}
     DEFAULT_SERVERS = read_json('servers.json', {})
     CHECKPOINTS = read_json('checkpoints.json', [])
 
     XPRV_HEADERS = {
-        'standard':    0x0488ade4,  # xprv
+        'standard':    0x0586dcf1,  # xprv
         'p2wpkh-p2sh': 0x049d7878,  # yprv
         'p2wsh-p2sh':  0x0295b005,  # Yprv
         'p2wpkh':      0x04b2430c,  # zprv
         'p2wsh':       0x02aa7a99,  # Zprv
     }
     XPUB_HEADERS = {
-        'standard':    0x0488b21e,  # xpub
+        'standard':    0x0586c22e,  # xpub
         'p2wpkh-p2sh': 0x049d7cb2,  # ypub
         'p2wsh-p2sh':  0x0295b43f,  # Ypub
         'p2wpkh':      0x04b24746,  # zpub
@@ -69,23 +69,23 @@ class BitcoinTestnet:
 
     TESTNET = True
     WIF_PREFIX = 0xbf
-    ADDRTYPE_P2PKH = 111
+    ADDRTYPE_P2PKH = 11
     ADDRTYPE_P2SH = 58
     SEGWIT_HRP = "tbery"
-    GENESIS = "4966625a4b2851d9fdee139e56211a0d88575f59ed816ff5e6a63deb4e3e29a0"
+    GENESIS = "fa211189d78247c5173828cdf035a808a69d74294022d0d5d170d707544d7ba8"
     DEFAULT_PORTS = {'t': '51001', 's': '51002'}
     DEFAULT_SERVERS = read_json('servers_testnet.json', {})
     CHECKPOINTS = read_json('checkpoints_testnet.json', [])
 
     XPRV_HEADERS = {
-        'standard':    0x04358394,  # tprv
+        'standard':    0x053784a4,  # tprv
         'p2wpkh-p2sh': 0x044a4e28,  # uprv
         'p2wsh-p2sh':  0x024285b5,  # Uprv
         'p2wpkh':      0x045f18bc,  # vprv
         'p2wsh':       0x02575048,  # Vprv
     }
     XPUB_HEADERS = {
-        'standard':    0x043587cf,  # tpub
+        'standard':    0x053782bf,  # tpub
         'p2wpkh-p2sh': 0x044a5262,  # upub
         'p2wsh-p2sh':  0x024289ef,  # Upub
         'p2wpkh':      0x045f1cf6,  # vpub
@@ -96,7 +96,7 @@ class BitcoinTestnet:
 class BitcoinRegtest(BitcoinTestnet):
 
     SEGWIT_HRP = "rbery"
-    GENESIS = "530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"
+    GENESIS = "3ba0bdc07f1acbd0453d2976a5faa10c10e7b14c93b83fad0d99b3b8c8c7d731"
     DEFAULT_SERVERS = read_json('servers_regtest.json', {})
     CHECKPOINTS = []
 
