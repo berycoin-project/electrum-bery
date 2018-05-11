@@ -538,27 +538,17 @@ def time_difference(distance_in_time, include_seconds):
     else:
         return "over %d years" % (round(distance_in_minutes / 525600))
 
-mainnet_block_explorers = {
-    'Bchain.info': ('https://bchain.info/',
-                        {'tx': 'BERY/tx/', 'addr': 'BERY/addr/'}),
-    'BlockCypher.com': ('https://live.blockcypher.com/bery/',
+mainnet_block_explorers = {    
+    'Berycore': ('https://explorer.berycoin.com/',
                         {'tx': 'tx/', 'addr': 'address/'}),
-    'explorer.berycoin.net': ('http://explorer.berycoin.net/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
-    'LiteCore': ('https://insight.litecore.io/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
-    'SoChain': ('https://chain.so/',
-                        {'tx': 'tx/BERY/', 'addr': 'address/BERY/'}),
-    'system default': ('blockchain://12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2/',
+    'system default': ('blockchain://ff23a3590cc6e308f1817283cfa807793aae41d6a1de9f30ed15b7e8361d7005/',
                         {'tx': 'tx/', 'addr': 'address/'}),
 }
 
 testnet_block_explorers = {
-    'LiteCore': ('https://testnet.litecore.io/',
+    'LiteCore': ('https://testexplorer.berycoin.com/',
                         {'tx': 'tx/', 'addr': 'address/'}),
-    'SoChain': ('https://chain.so/',
-                        {'tx': 'tx/BERYTEST/', 'addr': 'address/BERYTEST/'}),
-    'system default': ('blockchain://4966625a4b2851d9fdee139e56211a0d88575f59ed816ff5e6a63deb4e3e29a0/',
+    'system default': ('blockchain://fa211189d78247c5173828cdf035a808a69d74294022d0d5d170d707544d7ba8/',
                        {'tx': 'tx/', 'addr': 'address/'}),
 }
 
