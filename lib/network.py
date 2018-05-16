@@ -927,7 +927,7 @@ class Network(util.DaemonThread):
         # If not finished, get the next header
         if next_height:
             if interface.mode == 'catch_up' and interface.tip > next_height + 50:
-                self.request_chunk(interface, next_height // 2016)
+                self.request_chunk(interface, next_height // 8640)
             else:
                 self.request_header(interface, next_height)
         else:
@@ -969,7 +969,7 @@ class Network(util.DaemonThread):
     def init_headers_file(self):
         b = self.blockchains[0]
         filename = b.path()
-        length = 80 * len(constants.net.CHECKPOINTS) * 2016
+        length = 80 * len(constants.net.CHECKPOINTS) * 8640
         if not os.path.exists(filename) or os.path.getsize(filename) < length:
             with open(filename, 'wb') as f:
                 if length>0:
@@ -1094,4 +1094,4 @@ class Network(util.DaemonThread):
             f.write(json.dumps(cp, indent=4))
 
     def max_checkpoint(self):
-        return max(0, len(constants.net.CHECKPOINTS) * 2016 - 1)
+        return max(0, len(constants.net.CHECKPOINTS) * 8640 - 1)
