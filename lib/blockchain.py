@@ -319,7 +319,7 @@ class Blockchain(util.PrintError):
         # new target
         # Berycoin: go back the full period unless it's the first retarget
         first_timestamp = self.get_timestamp(index * 8640 - 1 if index > 0 else 0)
-        last = self.read_header(index * 8640 + 2015)
+        last = self.read_header(index * 8640 + 8639)
         bits = last.get('bits')
         target = self.bits_to_target(bits)
         nActualTimespan = last.get('timestamp') - first_timestamp
