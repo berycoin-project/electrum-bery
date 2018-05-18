@@ -40,7 +40,7 @@ def read_json(filename, default):
 class BitcoinMainnet:
 
     TESTNET = False
-    WIF_PREFIX = 0x80
+    WIF_PREFIX = 0xD8
     ADDRTYPE_P2PKH = 25
     ADDRTYPE_P2SH = 51
     SEGWIT_HRP = "bery"
