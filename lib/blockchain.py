@@ -375,7 +375,7 @@ class Blockchain(util.PrintError):
         try:
             data = bfh(hexdata)
             self.verify_chunk(idx, data)
-            #self.print_error("validated chunk %d" % idx)
+            self.print_error("validated chunk %d" % idx)
             self.save_chunk(idx, data)
             return True
         except BaseException as e:
