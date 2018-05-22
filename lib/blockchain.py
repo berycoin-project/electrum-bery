@@ -312,7 +312,7 @@ class Blockchain(util.PrintError):
         if constants.net.TESTNET:
             return 0
         if index == -1:
-            return 0x00000FFFF0000000000000000000000000000000000000000000000000000000
+            return 0x00000FFD00000000000000000000000000000000000000000000000000000000
         if index < len(self.checkpoints):
             h, t, _ = self.checkpoints[index]
             return t
