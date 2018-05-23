@@ -539,16 +539,16 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {    
-    'Berycore': ('https://explorer.berycoin.com/',
+    'BeryCore': ('https://explorer.berycoin.com/',
                         {'tx': 'tx/', 'addr': 'address/'}),
-    'system default': ('blockchain://ff23a3590cc6e308f1817283cfa807793aae41d6a1de9f30ed15b7e8361d7005/',
+    'system default': ('https://explorer.berycoin.com/',
                         {'tx': 'tx/', 'addr': 'address/'}),
 }
 
 testnet_block_explorers = {
-    'LiteCore': ('https://testexplorer.berycoin.com/',
+    'BeryCore': ('https://testexplorer.berycoin.com/',
                         {'tx': 'tx/', 'addr': 'address/'}),
-    'system default': ('blockchain://fa211189d78247c5173828cdf035a808a69d74294022d0d5d170d707544d7ba8/',
+    'system default': ('https://testexplorer.berycoin.com/',
                        {'tx': 'tx/', 'addr': 'address/'}),
 }
 
